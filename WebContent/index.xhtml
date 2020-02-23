@@ -46,7 +46,8 @@
 		<br></br>
 		<br></br>
 
-		<h:dataTable value="#{usuarioPessoaManagedBean.list}" var="user" cellpadding="15" border="1">
+		<h:dataTable value="#{usuarioPessoaManagedBean.list}" var="user"
+			cellpadding="15" border="1">
 			<f:facet name="header">Lista de Usuários</f:facet>
 			<br></br>
 			<h:column>
@@ -72,6 +73,23 @@
 			<h:column>
 				<f:facet name="header">E-mail</f:facet>
 				<h:outputText value="#{user.email}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Editar</f:facet>
+				<h:commandLink value="Ediar" action="#{usuarioPessoaManagedBean.update}">
+					<f:setPropertyActionListener value="#{user}"
+						target="#{usuarioPessoaManagedBean.usuarioPessoa}" />
+				</h:commandLink>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Delete</f:facet>
+				<h:commandLink value="Delete"
+					action="#{usuarioPessoaManagedBean.delete}">
+					<f:setPropertyActionListener value="#{user}"
+						target="#{usuarioPessoaManagedBean.usuarioPessoa}" />
+				</h:commandLink>
 			</h:column>
 		</h:dataTable>
 
