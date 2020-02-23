@@ -71,7 +71,7 @@ public class TesteHibernate {
 	public void testeDelete(){
 		DaoGeneric<UsuarioPessoa> daoGeneric = new DaoGeneric<UsuarioPessoa>();
 		
-		UsuarioPessoa pessoa = daoGeneric.pesquisar(3L , UsuarioPessoa.class);
+		UsuarioPessoa pessoa = daoGeneric.pesquisar(30L , UsuarioPessoa.class);
 		
 		daoGeneric.deletarPoId(pessoa);
 		
