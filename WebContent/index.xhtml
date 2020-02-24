@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
+
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
 
-
 <h:head></h:head>
+
 <h:body>
-	<h:form>
-
-
-		<h:messages showDetail="true" showSummary="false" />
+	<h:form id="formulario">
+		<h:messages showDetail="true" showSummary="false" id="msg"/>
 		<h:panelGrid columns="2">
-
 			<h:outputLabel>Id</h:outputLabel>
 			<h:inputText readonly="true"
 				value="#{usuarioPessoaManagedBean.usuarioPessoa.id}" />
-
 
 			<h:outputLabel>Nome</h:outputLabel>
 			<h:inputText value="#{usuarioPessoaManagedBean.usuarioPessoa.nome}"
@@ -42,7 +39,7 @@
 
 		<br></br>
 
-		<!-- Botões de novo e salvar -->
+
 		<h:commandButton value="Salva"
 			action="#{usuarioPessoaManagedBean.salva}" />
 		<h:commandButton value="Novo"
@@ -50,8 +47,9 @@
 
 		<br></br>
 		<br></br>
+	</h:form>
 
-		<!-- Lista de usuario. -->
+	<h:form id="formtable">
 		<h:dataTable value="#{usuarioPessoaManagedBean.list}" var="user"
 			cellpadding="15" border="1">
 			<f:facet name="header">Lista de Usuários</f:facet>
@@ -80,28 +78,28 @@
 				<f:facet name="header">E-mail</f:facet>
 				<h:outputText value="#{user.email}" />
 			</h:column>
-
-			<!-- Botões de edita e delete -->
 			<h:column>
 				<f:facet name="header">Editar</f:facet>
-				<h:commandLink value="Ediar">
+				<h:commandLink immediate="true" id="botaoeditar">
+					<h:graphicImage url="resources/img/editar-icon.png" width="50"
+						height="50" />
 					<f:setPropertyActionListener value="#{user}"
 						target="#{usuarioPessoaManagedBean.usuarioPessoa}" />
+					<f:ajax execute="botaoeditar" render="@form :formulario:msg" />
 				</h:commandLink>
 			</h:column>
 
 			<h:column>
 				<f:facet name="header">Delete</f:facet>
-				<h:commandLink value="Delete"
+				<h:commandLink immediate="true"
 					action="#{usuarioPessoaManagedBean.delete}">
+					<h:graphicImage url="resources/img/icon-delete-24x24.png"
+						width="25" height="25" />
 					<f:setPropertyActionListener value="#{user}"
 						target="#{usuarioPessoaManagedBean.usuarioPessoa}" />
 				</h:commandLink>
 			</h:column>
 		</h:dataTable>
-
 	</h:form>
 </h:body>
-
-
 </html>
