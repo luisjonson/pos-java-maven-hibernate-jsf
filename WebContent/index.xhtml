@@ -8,7 +8,7 @@
 
 <h:body>
 	<h:form id="formulario">
-		<h:messages showDetail="true" showSummary="false" id="msg"/>
+		<h:messages showDetail="true" showSummary="false" id="msg" />
 		<h:panelGrid columns="2">
 			<h:outputLabel>Id</h:outputLabel>
 			<h:inputText readonly="true"
@@ -92,11 +92,21 @@
 			<h:column>
 				<f:facet name="header">Delete</f:facet>
 				<h:commandLink immediate="true"
-					action="#{usuarioPessoaManagedBean.delete}">
+					action="#{usuarioPessoaManagedBean.remove}" id="butaoremover">
 					<h:graphicImage url="resources/img/icon-delete-24x24.png"
 						width="25" height="25" />
 					<f:setPropertyActionListener value="#{user}"
 						target="#{usuarioPessoaManagedBean.usuarioPessoa}" />
+				</h:commandLink>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Telefone</f:facet>
+				<h:commandLink immediate="true" action="telefone.jsf"
+					id="butatelefone">
+					<h:graphicImage url="resources/img/telefone.png" width="25"
+						height="25" />
+					<f:param name="codigouser" value="user.id" />
 				</h:commandLink>
 			</h:column>
 		</h:dataTable>
